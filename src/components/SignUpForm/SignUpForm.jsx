@@ -7,6 +7,7 @@ export default class SignUpForm extends Component {
     email: '',
     password: '',
     confirm: '',
+    isPoster: '',
     error: ''
   };
 
@@ -20,13 +21,8 @@ export default class SignUpForm extends Component {
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      const {name, email, password} = this.state;
-      const formData = {name, email, password};
-      // old way of doing this below
-      // const formData = {
-      //   name: this.state.name,
-      //   email: this.state.email,
-      //   password: this.state.password
+      const {name, email, password, isPoster} = this.state;
+      const formData = {name, email, password, isPoster};
       const user = await signUp(formData);
       // bay step...
       // TODO: Update user state in App
@@ -52,6 +48,11 @@ export default class SignUpForm extends Component {
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
             <label>Confirm</label>
             <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
+            <label>User Type</label>
+            <select name="isPoster" value={this.state.isPoster} onChange={this.handleChange} required >
+              <option>Photographer</option>
+              <option>Job Poster</option>
+            </select>
             <button type="submit" disabled={disable}>SIGN UP</button>
           </form>
         </div>
