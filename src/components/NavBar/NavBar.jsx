@@ -10,15 +10,37 @@ export default function NavBar({ user, setUser }) {
     <nav>
       {user ? (
         <>
-          <Link to="/">Home</Link>
-          &nbsp; | &nbsp;
-          <Link to="/about">About Us</Link>
-          &nbsp; | &nbsp;
-          <Link to="/book">How To Book</Link>
-          &nbsp; | &nbsp;
-          <Link to="/" onClick={handleLogOut}>
-            Log Out
-          </Link>
+          {user.isPoster ? (
+            <>
+              <Link to="/">Home</Link>
+              &nbsp; | &nbsp;
+              <Link to="/about">About Us</Link>
+              &nbsp; | &nbsp;
+              <Link to="/book">How To Book</Link>
+              &nbsp; | &nbsp;
+              <Link to="/jobs">My Jobs</Link>
+              &nbsp; | &nbsp;
+              <Link to="/profile">Profile</Link>
+              &nbsp; | &nbsp;
+              <Link to="/" onClick={handleLogOut}>
+                Log Out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/">Home</Link>
+              &nbsp; | &nbsp;
+              <Link to="/about">About Us</Link>
+              &nbsp; | &nbsp;
+              <Link to="/board">Job Board</Link>
+              &nbsp; | &nbsp;
+              <Link to="/profile">Profile</Link>
+              &nbsp; | &nbsp;
+              <Link to="/" onClick={handleLogOut}>
+                Log Out
+              </Link>
+            </>
+          )}
         </>
       ) : (
         <>

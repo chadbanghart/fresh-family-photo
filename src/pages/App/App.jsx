@@ -6,6 +6,8 @@ import AboutUsPage from "../AboutUsPage/AboutUsPage";
 import AuthPage from "../AuthPage/AuthPage";
 import HomePage from "../HomePage/HomePage";
 import NavBar from "../../components/NavBar/NavBar";
+import HowToBookPage from "../HowToBookPage/HowToBookPage";
+import JobBoardPage from "../JobBoardPage/JobBoardPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
           <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/book" element={<HowToBookPage />} />
+          <Route path="/board" element={<JobBoardPage />} />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
