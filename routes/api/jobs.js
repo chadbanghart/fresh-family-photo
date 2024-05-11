@@ -9,5 +9,7 @@ const ensureLoggedIn = require("../../config/ensureLoggedIn");
 router.get("/", ensureLoggedIn, jobsCtrl.getAllForUser);
 // POST /api/jobs (create job)
 router.post("/", jobsCtrl.create);
+// PUT /api/jobs/:id
+router.put("/:id", jobsCtrl.update);
 
 module.exports = router;

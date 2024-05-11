@@ -8,3 +8,7 @@ export function getAll() {
 export function add(eventData) {
   return sendRequest(BASE_URL, "POST", eventData);
 }
+
+export function updateJob(jobId, jobData) {
+  return sendRequest(`${BASE_URL}/${jobId}`, "PUT", jobData);
+}

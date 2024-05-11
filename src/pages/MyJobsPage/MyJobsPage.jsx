@@ -20,13 +20,22 @@ export default function MyJobsPage() {
     setJobs([...jobs, job]);
   }
 
+  async function handleJobUpdate(jobId, updatedJob) {
+    const updated = await jobsAPI.updateJob(jobId, updatedJob);
+    setJobs(jobs.map((job) => (job._id === jobId ? updated : job)));
+  }
+
   return (
     <>
       <h1>My Jobs</h1>
       {jobs.length ? (
         <div className="job-grid">
           {jobs.map((job) => (
-            <JobCard job={job} key={job._id} />
+            <JobCard
+              job={job}
+              key={job._id}
+              handleJobUpdate={handleJobUpdate}
+            />
           ))}
         </div>
       ) : (
