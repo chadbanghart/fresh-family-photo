@@ -16,3 +16,7 @@ export function add(eventData) {
 export function updateJob(jobId, jobData) {
   return sendRequest(`${BASE_URL}/${jobId}`, "PUT", jobData);
 }
+
+export function getJobForApplication(jobId) {
+  return sendRequest(`${BASE_URL}/application/${jobId}`);
+}

@@ -10,6 +10,7 @@ import HowToBookPage from "../HowToBookPage/HowToBookPage";
 import JobBoardPage from "../JobBoardPage/JobBoardPage";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import MyJobsPage from "../MyJobsPage/MyJobsPage";
+import JobApplicationPage from "../JobApplicationPage/JobApplicationPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -35,6 +36,7 @@ export default function App() {
             element={<UserProfilePage user={user} setUser={setUser} />}
           />
           <Route path="/jobs" element={<MyJobsPage user={user} />} />
+          <Route path="/application/:jobId" element={<JobApplicationPage />} />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>

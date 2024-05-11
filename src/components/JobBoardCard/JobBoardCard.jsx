@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./JobBoardCard.css";
 
 export default function JobBoardCard({ job }) {
+  const navigate = useNavigate();
+
+  function handleRedirect() {
+    navigate(`/application/${job._id}`);
+  }
+
   return (
     <div className="job-board-card">
       <h3>Job: {job.jobName}</h3>
@@ -8,7 +15,9 @@ export default function JobBoardCard({ job }) {
       <p>Location: {job.location}</p>
       <p>Description: {job.description}</p>
       <div className="button-container">
-        <button className="board-button">Apply</button>
+        <button className="board-button" onClick={handleRedirect}>
+          Apply
+        </button>
       </div>
     </div>
   );
