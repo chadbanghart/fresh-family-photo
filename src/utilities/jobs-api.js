@@ -1,8 +1,12 @@
 import sendRequest from "./send-requests";
 const BASE_URL = "/api/jobs";
 
-export function getAll() {
-  return sendRequest(BASE_URL);
+export function getAllJobsForBoard() {
+  return sendRequest(`${BASE_URL}/board`);
+}
+
+export function getAllJobsForUser() {
+  return sendRequest(`${BASE_URL}/user`);
 }
 
 export function add(eventData) {

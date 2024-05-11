@@ -5,8 +5,10 @@ const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
 // All paths start with /api/jobs
 
-// GET /api/jobs (get all jobs posted)
-router.get("/", ensureLoggedIn, jobsCtrl.getAllForUser);
+// GET /api/jobs/poster (get all jobs posted by poster)
+router.get("/poster", ensureLoggedIn, jobsCtrl.getAllForUser);
+// GET /api/jobs/board (get all jobs for job board)
+router.get("/board", jobsCtrl.getAllJobsForBoard);
 // POST /api/jobs (create job)
 router.post("/", jobsCtrl.create);
 // PUT /api/jobs/:id

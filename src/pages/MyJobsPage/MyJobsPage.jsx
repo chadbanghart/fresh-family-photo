@@ -9,7 +9,7 @@ export default function MyJobsPage() {
 
   useEffect(function () {
     async function getJobs() {
-      const jobs = await jobsAPI.getAll();
+      const jobs = await jobsAPI.getAllJobsForUser();
       setJobs(jobs);
     }
     getJobs();
