@@ -1,0 +1,19 @@
+.job-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+  border: 1px solid #ddd;
+}
+
+.job-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.job-card p {
+  color: #666;
+  margin: 5px 0;
+}

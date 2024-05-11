@@ -27,8 +27,6 @@ export default class SignUpForm extends Component {
       const { name, email, password, isPoster } = this.state;
       const formData = { name, email, password, isPoster };
       const user = await signUp(formData);
-      // bay step...
-      // TODO: Update user state in App
       this.props.setUser(user);
       this.props.navigate("/");
       // };

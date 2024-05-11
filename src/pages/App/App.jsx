@@ -8,13 +8,19 @@ import HomePage from "../HomePage/HomePage";
 import NavBar from "../../components/NavBar/NavBar";
 import HowToBookPage from "../HowToBookPage/HowToBookPage";
 import JobBoardPage from "../JobBoardPage/JobBoardPage";
+import ProfilePage from "../ProfilePage/ProfilePage";
+import MyJobsPage from "../MyJobsPage/MyJobsPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
   return (
     <>
-      <header className="App-header"></header>
+      <header className="App-header">
+        <div>
+          <img src="freshfamilyphoto.jpg" alt="logo" />
+        </div>
+      </header>
       <main className="App">
         <NavBar user={user} setUser={setUser} />
         <Routes>
@@ -24,6 +30,8 @@ export default function App() {
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/book" element={<HowToBookPage />} />
           <Route path="/board" element={<JobBoardPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/jobs" element={<MyJobsPage user={user} />} />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>

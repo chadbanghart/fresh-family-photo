@@ -1,0 +1,19 @@
+.NavBar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.NavBar a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  display: inline-block;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.NavBar a:hover,
+.NavBar a.active {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}

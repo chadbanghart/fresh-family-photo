@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
+import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
   function handleLogOut() {
@@ -7,50 +8,38 @@ export default function NavBar({ user, setUser }) {
     setUser(null);
   }
   return (
-    <nav>
+    <nav className="NavBar">
       {user ? (
         <>
           {user.isPoster ? (
             <>
-              <Link to="/">Home</Link>
-              &nbsp; | &nbsp;
-              <Link to="/about">About Us</Link>
-              &nbsp; | &nbsp;
-              <Link to="/book">How To Book</Link>
-              &nbsp; | &nbsp;
-              <Link to="/jobs">My Jobs</Link>
-              &nbsp; | &nbsp;
-              <Link to="/profile">Profile</Link>
-              &nbsp; | &nbsp;
-              <Link to="/" onClick={handleLogOut}>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/book">How To Book</NavLink>
+              <NavLink to="/jobs">My Jobs</NavLink>
+              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="" onClick={handleLogOut}>
                 Log Out
-              </Link>
+              </NavLink>
             </>
           ) : (
             <>
-              <Link to="/">Home</Link>
-              &nbsp; | &nbsp;
-              <Link to="/about">About Us</Link>
-              &nbsp; | &nbsp;
-              <Link to="/board">Job Board</Link>
-              &nbsp; | &nbsp;
-              <Link to="/profile">Profile</Link>
-              &nbsp; | &nbsp;
-              <Link to="/" onClick={handleLogOut}>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/board">Job Board</NavLink>
+              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="" onClick={handleLogOut}>
                 Log Out
-              </Link>
+              </NavLink>
             </>
           )}
         </>
       ) : (
         <>
-          <Link to="/">Home</Link>
-          &nbsp; | &nbsp;
-          <Link to="/about">About Us</Link>
-          &nbsp; | &nbsp;
-          <Link to="/book">How To Book</Link>
-          &nbsp; | &nbsp;
-          <Link to="/auth">Log In</Link>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about">About Us</NavLink>
+          <NavLink to="/book">How To Book</NavLink>
+          <NavLink to="/auth">Log In</NavLink>
         </>
       )}
     </nav>
