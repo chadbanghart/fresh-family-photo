@@ -9,7 +9,6 @@ export default function JobBoardPage() {
   useEffect(function () {
     async function getJobs() {
       const jobs = await jobsAPI.getAllJobsForBoard();
-      console.log("jobs fetched", jobs);
       setJobs(jobs);
     }
     getJobs();

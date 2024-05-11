@@ -1,13 +1,13 @@
 const Job = require("../../models/job");
 
 module.exports = {
-  getAllForUser,
+  getAllJobsForUser,
   getAllJobsForBoard,
   create,
   update,
 };
 
-async function getAllForUser(req, res) {
+async function getAllJobsForUser(req, res) {
   const jobs = await Job.find({ poster: req.user._id });
   res.json(jobs);
 }

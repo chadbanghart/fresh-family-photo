@@ -6,7 +6,7 @@ export function getAllJobsForBoard() {
 }
 
 export function getAllJobsForUser() {
-  return sendRequest(`${BASE_URL}/user`);
+  return sendRequest(`${BASE_URL}/myjobs`);
 }
 
 export function add(eventData) {

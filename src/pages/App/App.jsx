@@ -8,7 +8,7 @@ import HomePage from "../HomePage/HomePage";
 import NavBar from "../../components/NavBar/NavBar";
 import HowToBookPage from "../HowToBookPage/HowToBookPage";
 import JobBoardPage from "../JobBoardPage/JobBoardPage";
-import ProfilePage from "../ProfilePage/ProfilePage";
+import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import MyJobsPage from "../MyJobsPage/MyJobsPage";
 
 export default function App() {
@@ -30,7 +30,10 @@ export default function App() {
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/book" element={<HowToBookPage />} />
           <Route path="/board" element={<JobBoardPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route
+            path="/profile"
+            element={<UserProfilePage user={user} setUser={setUser} />}
+          />
           <Route path="/jobs" element={<MyJobsPage user={user} />} />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />
