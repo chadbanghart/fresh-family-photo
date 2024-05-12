@@ -3,7 +3,7 @@ import * as jobsAPI from "../../utilities/jobs-api";
 import JobBoardCard from "../../components/JobBoardCard/JobBoardCard";
 import "./JobBoardPage.css";
 
-export default function JobBoardPage() {
+export default function JobBoardPage({ user, appliedJobs, handleApplication }) {
   const [jobs, setJobs] = useState([]);
 
   useEffect(function () {
@@ -20,7 +20,13 @@ export default function JobBoardPage() {
       {jobs.length ? (
         <div className="job-board-container">
           {jobs.map((job) => (
-            <JobBoardCard job={job} key={job._id} />
+            <JobBoardCard
+              job={job}
+              key={job._id}
+              user={user}
+              appliedJobs={appliedJobs.includes(job._id)}
+              handleApplication={handleApplication}
+            />
           ))}
         </div>
       ) : (

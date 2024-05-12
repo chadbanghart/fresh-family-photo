@@ -1,6 +1,14 @@
 import sendRequest from "./send-requests";
 const BASE_URL = "/api/jobs";
 
+export function addApp(jobId, applicationData) {
+  return sendRequest(
+    `${BASE_URL}/application/${jobId}`,
+    "POST",
+    applicationData
+  );
+}
+
 export function getAllJobsForBoard() {
   return sendRequest(`${BASE_URL}/board`);
 }

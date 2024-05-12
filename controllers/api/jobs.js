@@ -6,7 +6,21 @@ module.exports = {
   getJobForApplication,
   create,
   update,
+  submitApp,
 };
+
+async function submitApp(req, res) {
+  const job = await Job.findById(req.params.id);
+  const application = {
+    applicant: req.user._id,
+    resume: req.body.resume,
+    pitch: req.body.pitch,
+  };
+
+  job.applications.push(application);
+  await job.save();
+  res.json(application);
+}
 
 async function getJobForApplication(req, res) {
   const job = await Job.findById(req.params.id);
@@ -19,7 +33,13 @@ async function getAllJobsForUser(req, res) {
 }
 
 async function getAllJobsForBoard(req, res) {
+  const userId = req.user._id;
   const jobs = await Job.find({});
+  jobs.forEach((job) => {
+    job.hasApplied = job.applications.some(
+      (app) => app.applicant.toString() === userId.toString()
+    );
+  });
   res.json(jobs);
 }
 

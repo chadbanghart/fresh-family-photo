@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const applicationSchema = new Schema({
   applicant: {
     type: Schema.Types.ObjectId,
-    ref: "Photographer",
+    ref: "User",
   },
   resume: { type: String },
   pitch: { type: String },
@@ -17,9 +17,9 @@ const jobSchema = new Schema({
   description: { type: String },
   poster: {
     type: Schema.Types.ObjectId,
-    ref: "Poster",
+    ref: "User",
   },
-  Applications: [applicationSchema],
+  applications: [applicationSchema],
 });
 
 module.exports = mongoose.model("Job", jobSchema);

@@ -14,6 +14,11 @@ import JobApplicationPage from "../JobApplicationPage/JobApplicationPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [appliedJobs, setAppliedJobs] = useState([]);
+
+  const handleApplication = (jobId) => {
+    setAppliedJobs((prev) => [...prev, jobId]);
+  };
 
   return (
     <>
@@ -30,13 +35,27 @@ export default function App() {
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/book" element={<HowToBookPage />} />
-          <Route path="/board" element={<JobBoardPage />} />
+          <Route
+            path="/board"
+            element={
+              <JobBoardPage
+                user={user}
+                appliedJobs={appliedJobs}
+                handleApplication={handleApplication}
+              />
+            }
+          />
           <Route
             path="/profile"
             element={<UserProfilePage user={user} setUser={setUser} />}
           />
           <Route path="/jobs" element={<MyJobsPage user={user} />} />
-          <Route path="/application/:jobId" element={<JobApplicationPage />} />
+          <Route
+            path="/application/:jobId"
+            element={
+              <JobApplicationPage handleApplication={handleApplication} />
+            }
+          />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>

@@ -13,6 +13,8 @@ router.get("/board", jobsCtrl.getAllJobsForBoard);
 router.get("/application/:id", jobsCtrl.getJobForApplication);
 // POST /api/jobs (create job)
 router.post("/", jobsCtrl.create);
+// POST /api/jobs/application/:id (submit application)
+router.post("/application/:id", ensureLoggedIn, jobsCtrl.submitApp);
 // PUT /api/jobs/:id
 router.put("/:id", jobsCtrl.update);
 
