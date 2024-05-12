@@ -13,3 +13,7 @@ export async function login(userData) {
 export async function getUserProfile(userId) {
   return sendRequest(`${BASE_URL}/${userId}`);
 }
+
+export async function saveProfile(apiPath, userId, profileData) {
+  return sendRequest(`${BASE_URL}/${apiPath}/${userId}`, "POST", profileData);
+}

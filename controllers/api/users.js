@@ -1,15 +1,43 @@
 const jwt = require("jsonwebtoken");
 const User = require("../../models/user");
+const Poster = require("../../models/posterProfile");
+const Photographer = require("../../models/photoProfile");
 const bcrypt = require("bcrypt");
 
 module.exports = {
   create,
   login,
   profile: getUserProfile,
+  editPosterProfile,
+  editPhotographerProfile,
 };
 
+async function editPhotographerProfile(req, res) {
+  const { userId } = req.params;
+  const profileData = req.body;
+  const profile = await Photographer.findOneAndUpdate(
+    { user: userId },
+    profileData,
+    { new: true, upsert: true }
+  );
+  res.json(profile);
+}
+
+async function editPosterProfile(req, res) {
+  const { userId } = req.params;
+  const profileData = req.body;
+  const profile = await Poster.findOneAndUpdate({ user: userId }, profileData, {
+    new: true,
+    upsert: true,
+  });
+  res.json(profile);
+}
+
 async function getUserProfile(req, res) {
-  const user = await User.findOne({ _id: req.params.id });
+  const user = await User.findById(req.params.id)
+    .populate("posterProfile")
+    .populate("photographerProfile")
+    .exec();
   res.json(user);
 }
 

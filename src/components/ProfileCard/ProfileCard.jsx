@@ -1,18 +1,26 @@
 export default function ProfileCard({ user }) {
   return (
     <>
-      {user.isPoster ? (
-        <>
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-          <p>{user.isPoster ? "Job Poster" : "Photographer"}</p>
-        </>
-      ) : (
-        <>
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-          <p>{user.isPoster ? "Job Poster" : "Photographer"}</p>
-        </>
+      <h4>Name: {user.name}</h4>
+      <p>Email: {user.email}</p>
+      <p>User Type: {user.isPoster ? "Job Poster" : "Photographer"}</p>
+      {user.posterProfile && (
+        <div>
+          <h5>Poster Profile</h5>
+          <img src={user.posterProfile.photo} alt="Poster Profile" />
+          {/* Display other poster profile details */}
+        </div>
+      )}
+      {user.photographerProfile && (
+        <div>
+          <h5>Photographer Profile</h5>
+          <img
+            src={user.photographerProfile.photo}
+            alt="Photographer Profile"
+          />
+          <p>Phone: {user.photographerProfile.phone}</p>
+          {/* Display other photographer profile details */}
+        </div>
       )}
     </>
   );

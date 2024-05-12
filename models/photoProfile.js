@@ -31,7 +31,7 @@ const photographerSchema = new Schema(
       type: String,
     },
     phone: {
-      type: Number,
+      type: String,
     },
     resume: {
       type: String,
