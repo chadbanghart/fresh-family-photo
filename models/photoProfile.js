@@ -33,6 +33,13 @@ const photographerSchema = new Schema(
     phone: {
       type: Number,
     },
+    resume: {
+      type: String,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     reviews: [reviewSchema],
   },
   {

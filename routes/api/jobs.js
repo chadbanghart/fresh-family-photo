@@ -11,6 +11,8 @@ router.get("/myjobs", ensureLoggedIn, jobsCtrl.getAllJobsForUser);
 router.get("/board", jobsCtrl.getAllJobsForBoard);
 // GET /api/jobs/application/:id (get job for application)
 router.get("/application/:id", jobsCtrl.getJobForApplication);
+// GET /api/jobs/applicants/:applicantId (get applicant detials)
+router.get("/applicants/:applicantId", jobsCtrl.getAppDetails);
 // POST /api/jobs (create job)
 router.post("/", jobsCtrl.create);
 // POST /api/jobs/application/:id (submit application)

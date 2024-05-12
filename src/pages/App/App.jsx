@@ -11,6 +11,7 @@ import JobBoardPage from "../JobBoardPage/JobBoardPage";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import MyJobsPage from "../MyJobsPage/MyJobsPage";
 import JobApplicationPage from "../JobApplicationPage/JobApplicationPage";
+import ApplicantDetailsPage from "../ApplicantDetailsPage/ApplicantDetailsPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -55,6 +56,10 @@ export default function App() {
             element={
               <JobApplicationPage handleApplication={handleApplication} />
             }
+          />
+          <Route
+            path="/applicant/:applicantId"
+            element={<ApplicantDetailsPage />}
           />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />

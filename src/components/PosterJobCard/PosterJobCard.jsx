@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./PosterJobCard.css";
+import { Link } from "react-router-dom";
 
 export default function PosterJobCard({ job, handleJobUpdate }) {
   const [editMode, setEditMode] = useState(false);
@@ -74,7 +75,11 @@ export default function PosterJobCard({ job, handleJobUpdate }) {
           {showApplicants && (
             <ul>
               {job.applications.map((app, index) => (
-                <li key={index}>Applicant ID: {app.applicant}</li>
+                <li key={index}>
+                  <Link to={`/applicant/${app.applicant}`}>
+                    Applicant ID: {app.applicant}
+                  </Link>
+                </li>
               ))}
             </ul>
           )}
