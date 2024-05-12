@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import "./JobCard.css";
+import "./PosterJobCard.css";
 
-export default function JobCard({ job, handleJobUpdate }) {
+export default function PosterJobCard({ job, handleJobUpdate }) {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({ ...job });
+  const [showApplicants, setShowApplicants] = useState(false);
 
   useEffect(() => {
     setFormData({ ...job });
@@ -19,8 +20,13 @@ export default function JobCard({ job, handleJobUpdate }) {
     await handleJobUpdate(job._id, formData);
     setEditMode(false);
   };
+
+  const toggleApplicantsView = () => {
+    setShowApplicants(!showApplicants);
+  };
+
   return (
-    <div className="job-card">
+    <div className="poster-job-card">
       {editMode ? (
         <form onSubmit={handleSubmit}>
           <input
@@ -63,7 +69,15 @@ export default function JobCard({ job, handleJobUpdate }) {
           <p>Description: {job.description}</p>
           <div className="button-container">
             <button onClick={() => setEditMode(true)}>Edit</button>
+            <button onClick={toggleApplicantsView}>View Applicants</button>
           </div>
+          {showApplicants && (
+            <ul>
+              {job.applications.map((app, index) => (
+                <li key={index}>Applicant ID: {app.applicant}</li>
+              ))}
+            </ul>
+          )}
         </>
       )}
     </div>

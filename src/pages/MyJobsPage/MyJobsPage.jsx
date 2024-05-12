@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as jobsAPI from "../../utilities/jobs-api";
 import CreateEventForm from "../../components/CreateEventForm/CreateEventForm";
-import JobCard from "../../components/JobCard/JobCard";
+import PosterJobCard from "../../components/PosterJobCard/PosterJobCard";
 import "./MyJobsPage.css";
 
 export default function MyJobsPage() {
@@ -31,7 +31,7 @@ export default function MyJobsPage() {
       {jobs.length ? (
         <div className="job-grid">
           {jobs.map((job) => (
-            <JobCard
+            <PosterJobCard
               job={job}
               key={job._id}
               handleJobUpdate={handleJobUpdate}

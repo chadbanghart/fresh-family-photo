@@ -1,4 +1,4 @@
-.job-card {
+.poster-job-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,24 +11,24 @@
   border: 1px solid #ddd;
 }
 
-.job-card h3 {
+.poster-job-card h3 {
   color: #333;
   margin-bottom: 10px;
 }
 
-.job-card p {
+.poster-job-card p {
   color: #666;
   margin: 5px 0;
 }
 
-.job-card .button-container {
+.poster-job-card .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 10px;
 }
 
-.job-card button {
+.poster-job-card button {
   padding: 6px 12px;
   font-size: 0.8rem;
   margin-left: 5px;
