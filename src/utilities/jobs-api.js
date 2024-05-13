@@ -1,6 +1,10 @@
 import sendRequest from "./send-requests";
 const BASE_URL = "/api/jobs";
 
+export function getJobForDetailsPage(jobId) {
+  return sendRequest(`${BASE_URL}/jobs/${jobId}`);
+}
+
 export function getAppDetails(applicantId) {
   return sendRequest(`${BASE_URL}/applicants/${applicantId}`);
 }

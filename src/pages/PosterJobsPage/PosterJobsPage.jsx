@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import * as jobsAPI from "../../utilities/jobs-api";
 import CreateEventForm from "../../components/CreateEventForm/CreateEventForm";
 import PosterJobCard from "../../components/PosterJobCard/PosterJobCard";
-import "./MyJobsPage.css";
+import "./PosterJobsPage.css";
 
-export default function MyJobsPage() {
+export default function MyJobsPage({ user }) {
   const [jobs, setJobs] = useState([]);
 
   useEffect(function () {
@@ -14,6 +14,8 @@ export default function MyJobsPage() {
     }
     getJobs();
   }, []);
+
+  if (!user.isPoster) return null;
 
   async function handleAddEvent(eventData) {
     const job = await jobsAPI.add(eventData);

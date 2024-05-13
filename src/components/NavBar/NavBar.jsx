@@ -1,11 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
 import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
-  function handleLogOut() {
+  const navigate = useNavigate();
+
+  function handleLogOut(e) {
+    e.preventDefault();
     userService.logOut();
     setUser(null);
+    navigate("/");
   }
   return (
     <nav className="NavBar">
@@ -18,7 +22,7 @@ export default function NavBar({ user, setUser }) {
               <NavLink to="/book">How To Book</NavLink>
               <NavLink to="/jobs">My Jobs</NavLink>
               <NavLink to="/profile">Profile</NavLink>
-              <NavLink to="" onClick={handleLogOut}>
+              <NavLink to="/logout" onClick={handleLogOut}>
                 Log Out
               </NavLink>
             </>
@@ -28,7 +32,7 @@ export default function NavBar({ user, setUser }) {
               <NavLink to="/about">About Us</NavLink>
               <NavLink to="/board">Job Board</NavLink>
               <NavLink to="/profile">Profile</NavLink>
-              <NavLink to="" onClick={handleLogOut}>
+              <NavLink to="/logout" onClick={handleLogOut}>
                 Log Out
               </NavLink>
             </>

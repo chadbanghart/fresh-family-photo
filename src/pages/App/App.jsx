@@ -9,9 +9,10 @@ import NavBar from "../../components/NavBar/NavBar";
 import HowToBookPage from "../HowToBookPage/HowToBookPage";
 import JobBoardPage from "../JobBoardPage/JobBoardPage";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
-import MyJobsPage from "../MyJobsPage/MyJobsPage";
+import PosterJobsPage from "../PosterJobsPage/PosterJobsPage";
 import JobApplicationPage from "../JobApplicationPage/JobApplicationPage";
 import ApplicantDetailsPage from "../ApplicantDetailsPage/ApplicantDetailsPage";
+import PosterJobDetailsPage from "../PosterJobDetails/PosterJobDetails";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -50,7 +51,8 @@ export default function App() {
             path="/profile"
             element={<UserProfilePage user={user} setUser={setUser} />}
           />
-          <Route path="/jobs" element={<MyJobsPage user={user} />} />
+          <Route path="/jobs" element={<PosterJobsPage user={user} />} />
+          <Route path="/jobs/:jobId" element={<PosterJobDetailsPage />} />
           <Route
             path="/application/:jobId"
             element={

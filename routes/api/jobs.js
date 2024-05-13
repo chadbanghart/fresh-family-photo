@@ -7,6 +7,8 @@ const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
 // GET /api/jobs/myjobs (get all jobs posted by poster)
 router.get("/myjobs", ensureLoggedIn, jobsCtrl.getAllJobsForUser);
+// GET /api/jobs/job/:jobId
+router.get("/jobs/:jobId", ensureLoggedIn, jobsCtrl.getJobDetails);
 // GET /api/jobs/board (get all jobs for job board)
 router.get("/board", jobsCtrl.getAllJobsForBoard);
 // GET /api/jobs/application/:id (get job for application)
