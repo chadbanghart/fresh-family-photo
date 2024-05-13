@@ -11,8 +11,7 @@ import JobBoardPage from "../JobBoardPage/JobBoardPage";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import PosterJobsPage from "../PosterJobsPage/PosterJobsPage";
 import JobApplicationPage from "../JobApplicationPage/JobApplicationPage";
-import ApplicantDetailsPage from "../ApplicantDetailsPage/ApplicantDetailsPage";
-import PosterJobDetailsPage from "../PosterJobDetails/PosterJobDetails";
+import PosterJobDetailsPage from "../PosterJobDetailsPage/PosterJobDetailsPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -52,16 +51,12 @@ export default function App() {
             element={<UserProfilePage user={user} setUser={setUser} />}
           />
           <Route path="/jobs" element={<PosterJobsPage user={user} />} />
-          <Route path="/jobs/:jobId" element={<PosterJobDetailsPage />} />
+          <Route path="/job/:jobId" element={<PosterJobDetailsPage />} />
           <Route
             path="/application/:jobId"
             element={
               <JobApplicationPage handleApplication={handleApplication} />
             }
-          />
-          <Route
-            path="/applicant/:applicantId"
-            element={<ApplicantDetailsPage />}
           />
           {/* additional Routes... */}
           <Route path="/*" element={<Navigate to="/" />} />

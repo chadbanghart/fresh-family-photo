@@ -13,9 +13,17 @@ module.exports = {
 };
 
 async function getJobDetails(req, res) {
-  const { jobId } = req.params;
-  const job = await Job.findById(jobId);
-  res.json(job);
+  try {
+    const { jobId } = req.params;
+    const job = await Job.findById(jobId);
+    if (!job) {
+      return res.status(404).send("Job not found");
+    }
+    res.json(job);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 }
 
 async function getAppDetails(req, res) {

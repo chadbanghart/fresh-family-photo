@@ -69,9 +69,9 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
             <p>Description: {job.description}</p>
             <div className="button-container">
               <button onClick={() => setEditMode(true)}>Edit</button>
-              <button onClick={toggleApplicantsView}>View Applicants</button>
+              {/* <button onClick={toggleApplicantsView}>View Applicants</button> */}
             </div>
-            {showApplicants && (
+            {/* {showApplicants && (
               <ul>
                 {job.applications.map((app, index) => (
                   <li key={index}>
@@ -81,7 +81,7 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
                   </li>
                 ))}
               </ul>
-            )}
+            )} */}
           </>
         )}
       </div>
