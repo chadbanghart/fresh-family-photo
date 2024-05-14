@@ -57,7 +57,7 @@ async function getAllJobsForUser(req, res) {
 
 async function getAllJobsForBoard(req, res) {
   const userId = req.user._id;
-  const jobs = await Job.find({});
+  const jobs = await Job.find({}).sort("date").exec();
   jobs.forEach((job) => {
     job.hasApplied = job.applications.some(
       (app) => app.applicant.toString() === userId.toString()
