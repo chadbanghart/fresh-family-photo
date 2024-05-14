@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import * as usersAPI from "../../utilities/users-api";
 import CreateUserProfileForm from "../../components/CreateUserProfileForm/CreateUserProfileForm";
 
 export default function UserProfilePage({ user, setUser }) {
-  const [loading, setLoading] = useState(true);
-
   const handleSaveProfile = async (userId, profileData, profileType) => {
     const apiPath = profileType === "Photographer" ? "photographer" : "poster";
     const updatedProfile = await usersAPI.saveProfile(
@@ -13,24 +11,19 @@ export default function UserProfilePage({ user, setUser }) {
       userId,
       profileData
     );
-    setUser({
-      ...user,
+    setUser((prevUser) => ({
+      ...prevUser,
       [profileType.toLowerCase() + "Profile"]: updatedProfile,
-    });
+    }));
   };
 
   useEffect(() => {
     async function getUser() {
       const userData = await usersAPI.getUserProfile(user._id);
       setUser(userData);
-      setLoading(false);
     }
     if (user && user._id) getUser();
   }, []);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <>

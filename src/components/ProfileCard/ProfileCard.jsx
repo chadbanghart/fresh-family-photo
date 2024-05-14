@@ -8,7 +8,6 @@ export default function ProfileCard({ user }) {
         <div>
           <h5>Poster Profile</h5>
           <img src={user.posterProfile.photo} alt="Poster Profile" />
-          {/* Display other poster profile details */}
         </div>
       )}
       {user.photographerProfile && (
@@ -19,7 +18,7 @@ export default function ProfileCard({ user }) {
             alt="Photographer Profile"
           />
           <p>Phone: {user.photographerProfile.phone}</p>
-          {/* Display other photographer profile details */}
+          <p>Resume Link: {user.photographerProfile.resume}</p>
         </div>
       )}
     </>

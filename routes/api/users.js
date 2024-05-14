@@ -7,14 +7,14 @@ const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
 // GET /api/users (get user for profile page)
 router.get("/:id", ensureLoggedIn, usersCtrl.profile);
-// POST /api/users/poster/:id (create or update poster profile)
-router.post("/poster/:id", ensureLoggedIn, usersCtrl.editPosterProfile);
-// POST /api/users/photographer/:id (create or update photographer profile)
+// POST /api/users/photographer/:userId (create or update photographer profile)
 router.post(
-  "/photographer/:id",
+  "/photographer/:userId",
   ensureLoggedIn,
   usersCtrl.editPhotographerProfile
 );
+// POST /api/users/poster/:userId (create or update photographer profile)
+router.post("/poster/:userId", ensureLoggedIn, usersCtrl.editPosterProfile);
 // POST /api/users (create/sign-up a user)
 router.post("/", usersCtrl.create);
 // POST /api/users/login (login a user)

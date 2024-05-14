@@ -15,22 +15,57 @@ module.exports = {
 async function editPhotographerProfile(req, res) {
   const { userId } = req.params;
   const profileData = req.body;
-  const profile = await Photographer.findOneAndUpdate(
-    { user: userId },
-    profileData,
-    { new: true, upsert: true }
-  );
-  res.json(profile);
+
+  try {
+    const user = await User.findById(userId);
+
+    // Update the photographer profile and link it to the user
+    const profile = await Photographer.findOneAndUpdate(
+      { user: userId },
+      { ...profileData, user: userId },
+      { new: true, upsert: true, setDefaultsOnInsert: true }
+    );
+
+    // Update user document if photographerProfile is not set
+    if (!user.photographerProfile) {
+      user.photographerProfile = profile._id;
+      await user.save();
+    }
+
+    res.json(profile);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 }
 
 async function editPosterProfile(req, res) {
   const { userId } = req.params;
   const profileData = req.body;
-  const profile = await Poster.findOneAndUpdate({ user: userId }, profileData, {
-    new: true,
-    upsert: true,
-  });
-  res.json(profile);
+
+  try {
+    const user = await User.findById(userId);
+
+    const profile = await Poster.findOneAndUpdate(
+      { user: userId },
+      { ...profileData, user: userId },
+      {
+        new: true,
+        upsert: true,
+        setDefaultsOnInsert: true,
+      }
+    );
+
+    if (!user.posterProfile) {
+      user.posterProfile = profile._id;
+      await user.save();
+    }
+
+    res.json(profile);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 }
 
 async function getUserProfile(req, res) {
