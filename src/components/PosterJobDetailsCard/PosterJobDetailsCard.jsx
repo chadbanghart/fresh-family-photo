@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({ ...job });
-  const [showApplicants, setShowApplicants] = useState(false);
 
   useEffect(() => {
     setFormData({ ...job });
@@ -21,9 +19,6 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
     setEditMode(false);
   };
 
-  const toggleApplicantsView = () => {
-    setShowApplicants(!showApplicants);
-  };
   return (
     <>
       <div className="poster-job-card">
@@ -69,19 +64,7 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
             <p>Description: {job.description}</p>
             <div className="button-container">
               <button onClick={() => setEditMode(true)}>Edit</button>
-              {/* <button onClick={toggleApplicantsView}>View Applicants</button> */}
             </div>
-            {/* {showApplicants && (
-              <ul>
-                {job.applications.map((app, index) => (
-                  <li key={index}>
-                    <Link to={`/applicant/${app.applicant}`}>
-                      Applicant ID: {app.applicant}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )} */}
           </>
         )}
       </div>
