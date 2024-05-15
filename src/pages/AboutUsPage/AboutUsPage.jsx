@@ -14,6 +14,20 @@ export default function AboutUsPage() {
         customer satisfaction, we aim to inspire and elevate the world of sports
         photography, one captivating image at a time.
       </p>
+      <div>
+        <h3>Contact Us</h3>
+        <form>
+          <label>First Name</label>
+          <input type="text" />
+          <label>Last Name</label>
+          <input type="text" />
+          <label>Email</label>
+          <input type="text" />
+          <label>Write a message</label>
+          <textarea name="message" id="message"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
   );
 }

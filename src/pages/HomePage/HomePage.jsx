@@ -8,10 +8,11 @@ export default function HomePage() {
         available for the photographers to apply to on our Job Board. You will
         have the ability to edit and view any applicant to your job posting
         within your Jobs page. As a Photographer, you can apply to any job you
-        are available for! You have the ability to save a resume to your
-        profile, while also being able to attach updated resumes to your
-        application. You also have the option of writing a pitch about why you
-        are a good fit! Navigate to our Log In page to get started!
+        are available for! You have the ability to set your profile up with
+        details to help inform the Job Posters about yourself, while also being
+        able to attach your resume when you fill out your application. You also
+        have the option of writing a pitch about why you are a good fit!
+        Navigate to our Log In page to get started!
       </p>
     </>
   );
