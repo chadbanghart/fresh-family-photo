@@ -9,11 +9,12 @@ export function getAppDetails(applicantId) {
   return sendRequest(`${BASE_URL}/applicants/${applicantId}`);
 }
 
-export function addApp(jobId, applicationData) {
+export function addApp(jobId, formData) {
   return sendRequest(
     `${BASE_URL}/application/${jobId}`,
     "POST",
-    applicationData
+    formData,
+    true
   );
 }
 

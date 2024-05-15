@@ -1,57 +1,52 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as jobsAPI from "../../utilities/jobs-api";
 
 export default function JobApplicationForm({ job, handleApplication }) {
-  const [applicant, setApplicant] = useState({
-    resume: "",
-    pitch: "",
-  });
+  const [pitch, setPitch] = useState("");
   const navigate = useNavigate();
+  const fileInputRef = useRef(null);
 
-  function handleChange(evt) {
-    const { name, value } = evt.target;
-    setApplicant((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    const submitApp = async () => {
-      const res = await jobsAPI.addApp(job._id, applicant);
+
+    if (!fileInputRef.current.files[0]) {
+      alert("Please upload a resume file.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("resume", fileInputRef.current.files[0]);
+    formData.append("pitch", pitch);
+
+    try {
+      const res = await jobsAPI.addApp(job._id, formData);
       if (res) {
-        setApplicant({ resume: "", pitch: "" });
         handleApplication();
         navigate("/board");
       }
-    };
-    submitApp();
+    } catch (error) {
+      console.error("Failed to submit application:", error);
+    }
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>Please provide a https:// URL to your resume </label>
-        <input
-          type="url"
-          name="resume"
-          placeholder="https://example.com"
-          pattern="https://.*"
-          size="30"
-          onChange={handleChange}
-          value={applicant.resume}
-          required
-        />
-        <label>Why are you the right person for the job?</label>
-        <textarea
-          name="pitch"
-          onChange={handleChange}
-          value={applicant.pitch}
-        ></textarea>
-        <button type="submit">Submit Application</button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <label>Upload your resume (PDF only):</label>
+      <input
+        type="file"
+        ref={fileInputRef}
+        name="resume"
+        accept=".pdf"
+        required
+      />
+      <label>Why are you the right person for the job?</label>
+      <textarea
+        name="pitch"
+        onChange={(e) => setPitch(e.target.value)}
+        value={pitch}
+      ></textarea>
+      <button type="submit">Submit Application</button>
+    </form>
   );
 }

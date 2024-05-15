@@ -1,5 +1,6 @@
 const Job = require("../../models/job");
 const User = require("../../models/user");
+const uploadFile = require("../../config/upload-file");
 
 module.exports = {
   getAllJobsForUser,
@@ -28,21 +29,40 @@ async function getJobDetails(req, res) {
 
 async function getAppDetails(req, res) {
   const { applicantId } = req.params;
-  const applicant = await User.findById(applicantId);
+  const applicant = await User.findById(applicantId)
+    .populate("photographerProfile")
+    .exec();
   res.json(applicant);
 }
 
 async function submitApp(req, res) {
-  const job = await Job.findById(req.params.id);
-  const application = {
-    applicant: req.user._id,
-    resume: req.body.resume,
-    pitch: req.body.pitch,
-  };
+  try {
+    const { id } = req.params; // job ID
+    if (req.file) {
+      console.log(req.file);
 
-  job.applications.push(application);
-  await job.save();
-  res.json(application);
+      const resumeUrl = await uploadFile(req.file);
+      const { pitch } = req.body; // pitch text from form
+
+      const job = await Job.findById(id);
+      if (!job) {
+        return res.status(404).json({ error: "Job not found" });
+      }
+
+      const application = {
+        applicant: req.user._id,
+        resume: resumeUrl,
+        pitch,
+      };
+
+      job.applications.push(application);
+      await job.save();
+
+      res.json(application);
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 }
 
 async function getJobForApplication(req, res) {

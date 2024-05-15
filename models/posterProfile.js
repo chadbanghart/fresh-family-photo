@@ -3,9 +3,7 @@ const Schema = mongoose.Schema;
 
 const posterSchema = new Schema(
   {
-    photo: {
-      type: String,
-    },
+    photoURL: { type: String },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",

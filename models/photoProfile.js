@@ -27,15 +27,10 @@ const reviewSchema = new Schema(
 
 const photographerSchema = new Schema(
   {
-    photo: {
-      type: String,
-    },
     phone: {
       type: String,
     },
-    resume: {
-      type: String,
-    },
+    photoURL: { type: String },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",

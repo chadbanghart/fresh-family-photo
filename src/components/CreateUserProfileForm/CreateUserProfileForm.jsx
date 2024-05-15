@@ -2,24 +2,22 @@ import { useState } from "react";
 
 export default function CreateUserProfileForm({ user, onSave, profileType }) {
   const [profileData, setProfileData] = useState({
-    photo: "",
+    photoURL: "",
     phone: "", // only used for photographers
-    resume: "", // only used for photographers
   });
 
-  const handleChange = (e) => {
+  async function handleChange(e) {
     setProfileData({ ...profileData, [e.target.name]: e.target.value });
-  };
+  }
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     await onSave(user._id, profileData, profileType);
     setProfileData({
-      photo: "",
+      photoURL: "",
       phone: "",
-      resume: "",
     });
-  };
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -27,8 +25,8 @@ export default function CreateUserProfileForm({ user, onSave, profileType }) {
         Photo URL:
         <input
           type="text"
-          name="photo"
-          value={profileData.photo}
+          name="photoURL"
+          value={profileData.photoURL}
           onChange={handleChange}
         />
       </label>
@@ -40,15 +38,6 @@ export default function CreateUserProfileForm({ user, onSave, profileType }) {
               type="text"
               name="phone"
               value={profileData.phone}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Resume URL:
-            <input
-              type="text"
-              name="resume"
-              value={profileData.resume}
               onChange={handleChange}
             />
           </label>

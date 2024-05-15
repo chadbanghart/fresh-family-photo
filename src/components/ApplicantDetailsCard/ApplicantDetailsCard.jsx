@@ -5,11 +5,23 @@ export default function ApplicantDetailsCard({ job, loadApplicant }) {
   const [currentApplicant, setCurrentApplicant] = useState(null);
 
   async function handleApplicantClick(appId) {
-    const app = await loadApplicant(appId);
-    setCurrentApplicant(app);
-    setViewApplicant(true);
-  }
+    const applicantDetails = await loadApplicant(appId);
+    const specificApplication = job.applications.find(
+      (app) => app.applicant === appId
+    );
 
+    if (applicantDetails && specificApplication) {
+      setCurrentApplicant({
+        ...applicantDetails,
+        photoURL: applicantDetails.photographerProfile.photoURL,
+        pitch: specificApplication.pitch,
+        resume: specificApplication.resume,
+      });
+      setViewApplicant(true);
+    } else {
+      console.error("No data returned for applicant with ID:", appId);
+    }
+  }
   return (
     <div className="poster-job-card">
       {viewApplicant && currentApplicant ? (
@@ -21,6 +33,17 @@ export default function ApplicantDetailsCard({ job, loadApplicant }) {
           <ul>
             <li>Name: {currentApplicant.name}</li>
             <li>Email: {currentApplicant.email}</li>
+            <li>
+              Photo:{" "}
+              <img src={currentApplicant.photoURL} alt="Applicant Profile" />
+            </li>
+            <li>Pitch: {currentApplicant.pitch}</li>
+            <li>
+              Resume:{" "}
+              <a href={currentApplicant.resume} download="ApplicantResume.pdf">
+                Download Resume
+              </a>
+            </li>
           </ul>
         </>
       ) : (
