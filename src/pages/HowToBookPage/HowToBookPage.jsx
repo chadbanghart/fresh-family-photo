@@ -11,8 +11,10 @@ export default function HowToBookPage() {
             <h4>01</h4>
             <h3>Request a Shoot</h3>
             <ul>
-              Within your "My Jobs" page you can submit any event you have just
-              provide the following details:
+              <h6>
+                Within your "My Jobs" page you can submit any event you have
+                just provide the following details:
+              </h6>
               <li>Name of your job</li>
               <li>Date of the job</li>
               <li>Location of the job</li>

@@ -7,6 +7,7 @@ export default function CreateEventForm({ handleAddEvent }) {
     location: "",
     description: "",
   });
+  const [addJob, setAddJob] = useState(false);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -19,6 +20,7 @@ export default function CreateEventForm({ handleAddEvent }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     handleAddEvent(eventData);
+    setAddJob(false);
     setEventData({
       jobName: "",
       date: "",
@@ -29,44 +31,53 @@ export default function CreateEventForm({ handleAddEvent }) {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <label>Job Name:</label>
-        <input
-          type="text"
-          name="jobName"
-          onChange={handleChange}
-          value={eventData.jobName}
-          required
-        />
+      {addJob ? (
+        <form onSubmit={handleSubmit}>
+          <label>Job Name:</label>
+          <input
+            type="text"
+            name="jobName"
+            onChange={handleChange}
+            value={eventData.jobName}
+            required
+          />
 
-        <label>Date:</label>
-        <input
-          type="date"
-          name="date"
-          onChange={handleChange}
-          value={eventData.date}
-          required
-        />
+          <label>Date:</label>
+          <input
+            type="date"
+            name="date"
+            onChange={handleChange}
+            value={eventData.date}
+            required
+          />
 
-        <label>Location:</label>
-        <input
-          type="text"
-          name="location"
-          onChange={handleChange}
-          value={eventData.location}
-          required
-        />
+          <label>Location:</label>
+          <input
+            type="text"
+            name="location"
+            onChange={handleChange}
+            value={eventData.location}
+            required
+          />
 
-        <label>Description:</label>
-        <textarea
-          name="description"
-          onChange={handleChange}
-          value={eventData.description}
-          required
-        ></textarea>
+          <label>Description:</label>
+          <textarea
+            name="description"
+            onChange={handleChange}
+            value={eventData.description}
+            required
+          ></textarea>
 
-        <button type="submit">Submit Job</button>
-      </form>
+          <button type="submit">Submit Job</button>
+          <button onClick={() => setAddJob(false)}>Cancel</button>
+        </form>
+      ) : (
+        <>
+          <div>
+            <button onClick={() => setAddJob(true)}>Add A Job</button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

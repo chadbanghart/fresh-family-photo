@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import "./App.css";
 import AboutUsPage from "../AboutUsPage/AboutUsPage";
@@ -62,6 +62,21 @@ export default function App() {
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </main>
+      <footer>
+        <div className="footer">
+          <div className="footer-img">
+            <Link
+              target="_blank"
+              to={"https://www.instagram.com/fresh_family_photo/"}
+            >
+              <img src="./insta.png" alt="insta" id="insta" />
+            </Link>
+          </div>
+          <div className="copyright">
+            &copy; Created & Designed by Chad Banghart, May 2024
+          </div>
+        </div>
+      </footer>
     </>
   );
 }

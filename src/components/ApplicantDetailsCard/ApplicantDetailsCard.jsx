@@ -14,6 +14,7 @@ export default function ApplicantDetailsCard({ job, loadApplicant }) {
       setCurrentApplicant({
         ...applicantDetails,
         photoURL: applicantDetails.photographerProfile.photoURL,
+        phone: applicantDetails.photographerProfile.phone,
         pitch: specificApplication.pitch,
         resume: specificApplication.resume,
       });
@@ -33,6 +34,7 @@ export default function ApplicantDetailsCard({ job, loadApplicant }) {
           <ul>
             <li>Name: {currentApplicant.name}</li>
             <li>Email: {currentApplicant.email}</li>
+            <li>Phone #: {currentApplicant.phone}</li>
             <li>
               Photo:{" "}
               <img src={currentApplicant.photoURL} alt="Applicant Profile" />
@@ -49,15 +51,21 @@ export default function ApplicantDetailsCard({ job, loadApplicant }) {
       ) : (
         <>
           <h6>Applicants List</h6>
-          <ul>
-            {job?.applications.map((app, index) => (
-              <li key={index}>
-                <button onClick={() => handleApplicantClick(app.applicant)}>
-                  Applicant #{index + 1}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {job.applications.length ? (
+            <ul>
+              {job?.applications.map((app, index) => (
+                <li key={index}>
+                  <button onClick={() => handleApplicantClick(app.applicant)}>
+                    Applicant #{index + 1}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <>
+              <p>You dont have any applicants yet!</p>
+            </>
+          )}
         </>
       )}
     </div>
