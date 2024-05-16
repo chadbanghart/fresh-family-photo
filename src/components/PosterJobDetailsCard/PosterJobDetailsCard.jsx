@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./PosterJobDetailsCard.css";
 
 export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
   const [editMode, setEditMode] = useState(false);
@@ -23,34 +24,38 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
     <>
       <div className="poster-job-card">
         {editMode ? (
-          <form onSubmit={handleSubmit}>
+          <form className="edit-form-container" onSubmit={handleSubmit}>
+            <label>Job: </label>
             <input
               type="text"
               name="jobName"
               value={formData.jobName}
               onChange={handleChange}
             />
-            <br />
+
+            <label>Date: </label>
             <input
               type="date"
               name="date"
               value={formData.date}
               onChange={handleChange}
             />
-            <br />
+
+            <label>Location: </label>
             <input
               type="text"
               name="location"
               value={formData.location}
               onChange={handleChange}
             />
-            <br />
+
+            <label>Description: </label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
             ></textarea>
-            <br />
+
             <div className="button-container">
               <button type="submit">Save</button>
               <button onClick={() => setEditMode(false)}>Cancel</button>
@@ -59,9 +64,18 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
         ) : (
           <>
             <h3>Job: {job.jobName}</h3>
-            <p>Date: {new Date(job.date).toLocaleDateString()}</p>
-            <p>Location: {job.location}</p>
-            <p>Description: {job.description}</p>
+            <p>
+              <strong>Date: </strong>
+              {new Date(job.date).toLocaleDateString()}
+            </p>
+            <p>
+              <strong>Location: </strong>
+              {job.location}
+            </p>
+            <p>
+              <strong>Description: </strong>
+              {job.description}
+            </p>
             <div className="button-container">
               <button onClick={() => setEditMode(true)}>Edit</button>
             </div>

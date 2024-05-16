@@ -1,0 +1,19 @@
+.edit-form-container {
+  width: 95%;
+  background-color: white;
+  border: none;
+  padding: 10px;
+}
+
+.edit-form-container textarea {
+  height: 6rem;
+}
+
+.button-container button {
+  padding: 12px 18px;
+  font-size: large;
+}
+
+label {
+  color: black;
+}

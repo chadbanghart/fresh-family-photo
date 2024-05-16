@@ -43,7 +43,9 @@ export default function MyJobsPage({ user }) {
       ) : (
         <p>You don't have any jobs posted yet!</p>
       )}
-      <CreateEventForm handleAddEvent={handleAddEvent} />
+      <div>
+        <CreateEventForm handleAddEvent={handleAddEvent} />
+      </div>
     </>
   );
 }

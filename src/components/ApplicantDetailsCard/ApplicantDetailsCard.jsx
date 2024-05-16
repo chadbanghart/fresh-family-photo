@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ApplicantDetailsCard.css";
 
 export default function ApplicantDetailsCard({ job, loadApplicant }) {
   const [viewApplicant, setViewApplicant] = useState(false);
@@ -27,40 +28,53 @@ export default function ApplicantDetailsCard({ job, loadApplicant }) {
     <div className="poster-job-card">
       {viewApplicant && currentApplicant ? (
         <>
-          <h6>Applicant Details</h6>
-          <button onClick={() => setViewApplicant(false)}>
-            Back to Applicant List
-          </button>
-          <ul>
-            <li>Name: {currentApplicant.name}</li>
-            <li>Email: {currentApplicant.email}</li>
-            <li>Phone #: {currentApplicant.phone}</li>
-            <li>
-              Photo:{" "}
-              <img src={currentApplicant.photoURL} alt="Applicant Profile" />
-            </li>
-            <li>Pitch: {currentApplicant.pitch}</li>
-            <li>
-              Resume:{" "}
+          <h2>Applicant Details</h2>
+          <div>
+            <button onClick={() => setViewApplicant(false)}>
+              Back to Applicant List
+            </button>
+          </div>
+          <div className="profile-card-app">
+            <h3>
+              <strong>Name: </strong>
+              {currentApplicant.name}
+            </h3>
+
+            <img src={currentApplicant.photoURL} alt="Applicant Profile" />
+            <p>
+              <strong>Email: </strong>
+              {currentApplicant.email}
+            </p>
+            <p>
+              <strong>Phone #: </strong>
+              {currentApplicant.phone}
+            </p>
+            <p>
+              <strong>Pitch: </strong>
+              {currentApplicant.pitch}
+            </p>
+            <p>
+              <strong>Resume: </strong>
               <a href={currentApplicant.resume} download="ApplicantResume.pdf">
                 Download Resume
               </a>
-            </li>
-          </ul>
+            </p>
+          </div>
         </>
       ) : (
         <>
-          <h6>Applicants List</h6>
+          <h2>Applicants List</h2>
           {job.applications.length ? (
-            <ul>
+            <div className="list-container">
               {job?.applications.map((app, index) => (
-                <li key={index}>
-                  <button onClick={() => handleApplicantClick(app.applicant)}>
-                    Applicant #{index + 1}
-                  </button>
-                </li>
+                <button
+                  key={index}
+                  onClick={() => handleApplicantClick(app.applicant)}
+                >
+                  Applicant #{index + 1}
+                </button>
               ))}
-            </ul>
+            </div>
           ) : (
             <>
               <p>You dont have any applicants yet!</p>

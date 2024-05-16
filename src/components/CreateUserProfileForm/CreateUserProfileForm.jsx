@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./CreateUserProfileForm.css";
 
 export default function CreateUserProfileForm({
   user,
@@ -40,43 +41,61 @@ export default function CreateUserProfileForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:{" "}
+    <form onSubmit={handleSubmit} className="form-container-profile">
+      <div className="form-content">
+        <label htmlFor="name">Name:</label>
         <input
           type="text"
+          id="name"
           name="name"
           value={profileData.name}
           onChange={handleChange}
         />
-      </label>
-      <label>Email: {user.email}</label>
-      <label>User Type: {user.isPoster ? "Job Poster" : "Photographer"}</label>
 
-      <label>
-        Photo URL:
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          value={user.email}
+          readOnly
+          className="readOnlyInput"
+        />
+
+        <label htmlFor="userType">User Type:</label>
         <input
           type="text"
+          id="userType"
+          value={user.isPoster ? "Job Poster" : "Photographer"}
+          readOnly
+          className="readOnlyInput"
+        />
+
+        <label htmlFor="photoURL">Photo URL:</label>
+        <input
+          type="text"
+          id="photoURL"
           name="photoURL"
           value={profileData.photoURL}
           onChange={handleChange}
         />
-      </label>
 
-      {profileType === "Photographer" && (
-        <label>
-          Phone:
-          <input
-            type="text"
-            name="phone"
-            value={profileData.phone}
-            onChange={handleChange}
-          />
-        </label>
-      )}
-
-      <button type="submit">Save Profile</button>
-      <button onClick={() => setEditMode(false)}>Cancel Changes</button>
+        {profileType === "Photographer" && (
+          <>
+            <label htmlFor="phone">Phone:</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              value={profileData.phone}
+              onChange={handleChange}
+            />
+          </>
+        )}
+      </div>
+      <div className="form-button">
+        <button type="submit">Save Profile</button>
+        <button onClick={() => setEditMode(false)}>Cancel Changes</button>
+      </div>
     </form>
   );
 }

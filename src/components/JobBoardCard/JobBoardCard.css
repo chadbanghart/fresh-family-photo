@@ -1,9 +1,16 @@
 .job-board-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  margin: 20px;
-  padding: 20px;
+  margin: 20px 60px;
+  padding: 10px 20px;
   border-radius: 10px;
   background-color: #b9b7b7;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+}
+.job-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .job-board-card h3 {
@@ -12,7 +19,7 @@
 }
 
 .job-board-card p {
-  color: #666;
+  color: #000000;
   margin: 5px 0;
 }
 
@@ -20,12 +27,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 10px;
 }
 
 .board-button {
   padding: 6px 12px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-left: 5px;
   vertical-align: middle;
   cursor: pointer;

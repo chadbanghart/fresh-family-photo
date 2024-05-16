@@ -10,10 +10,12 @@ export default function JobBoardCard({ job }) {
 
   return (
     <div className="job-board-card">
-      <h3>Job: {job.jobName}</h3>
-      <p>Date: {new Date(job.date).toLocaleDateString()}</p>
-      <p>Location: {job.location}</p>
-      <p>Description: {job.description}</p>
+      <div className="job-details">
+        <h3>Job: {job.jobName}</h3>
+        <p>Date: {new Date(job.date).toLocaleDateString()}</p>
+        <p>Location: {job.location}</p>
+        <p>Description: {job.description}</p>
+      </div>
       <div className="button-container">
         <button className="board-button" onClick={handleRedirect}>
           Apply

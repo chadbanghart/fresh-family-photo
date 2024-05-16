@@ -1,0 +1,14 @@
+.form-container {
+  width: 50%;
+  margin: 0 auto;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  grid-column: 2 / 3;
+}
+
+button {
+  width: fit-content;
+}

@@ -85,7 +85,7 @@ code {
   background-color: rgb(212, 212, 212);
   border: 0.1vmin solid grey;
   border-radius: 1vmin;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 p.error-message {

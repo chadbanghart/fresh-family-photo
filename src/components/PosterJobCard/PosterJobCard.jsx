@@ -10,8 +10,7 @@ export default function PosterJobCard({ job }) {
         <p>Location: {job.location}</p>
         <p>Description: {job.description}</p>
         <p>
-          Job Details:
-          <Link to={`/job/${job._id}`}> View Job Details</Link>
+          Job Details: <Link to={`/job/${job._id}`}>View Job Details</Link>
         </p>
       </>
     </div>

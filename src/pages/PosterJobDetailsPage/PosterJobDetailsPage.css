@@ -1,0 +1,8 @@
+.job-grid-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(600px, 1fr));
+  grid-gap: 20px;
+  margin: 0 auto;
+  width: 50%;
+  justify-content: center;
+}

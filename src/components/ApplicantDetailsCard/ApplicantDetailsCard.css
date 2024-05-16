@@ -1,0 +1,35 @@
+.app-card-container {
+  width: 100%;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+}
+.profile-card-app {
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  background-color: #dfdfdf;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  justify-content: center;
+}
+
+.profile-card-app img {
+  border-radius: 50%;
+}
+
+button {
+  padding: 10px 18px;
+  font-size: large;
+}
+
+.list-container li {
+  list-style: none;
+  justify-content: center;
+}
+.list-container button {
+  padding: 12px 18px;
+  font-size: large;
+}

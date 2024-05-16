@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./CreateEventForm.css";
 
 export default function CreateEventForm({ handleAddEvent }) {
   const [eventData, setEventData] = useState({
@@ -32,7 +33,7 @@ export default function CreateEventForm({ handleAddEvent }) {
   return (
     <div className="form-container">
       {addJob ? (
-        <form onSubmit={handleSubmit}>
+        <form className="job-form" onSubmit={handleSubmit}>
           <label>Job Name:</label>
           <input
             type="text"
@@ -67,9 +68,10 @@ export default function CreateEventForm({ handleAddEvent }) {
             value={eventData.description}
             required
           ></textarea>
-
-          <button type="submit">Submit Job</button>
-          <button onClick={() => setAddJob(false)}>Cancel</button>
+          <div className="button-container">
+            <button type="submit">Submit Job</button>
+            <button onClick={() => setAddJob(false)}>Cancel</button>
+          </div>
         </form>
       ) : (
         <>

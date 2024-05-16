@@ -3,6 +3,7 @@ import PosterJobDetailsCard from "../../components/PosterJobDetailsCard/PosterJo
 import * as jobsAPI from "../../utilities/jobs-api";
 import { Link, useParams } from "react-router-dom";
 import ApplicantDetailsCard from "../../components/ApplicantDetailsCard/ApplicantDetailsCard";
+import "./PosterJobDetailsPage.css";
 
 export default function PosterJobDetailsPage() {
   const { jobId } = useParams();
@@ -34,7 +35,7 @@ export default function PosterJobDetailsPage() {
   return (
     <>
       <Link to={"/jobs"}>Go Back to My Jobs</Link>
-      <div className="job-grid">
+      <div className="job-grid-details">
         <PosterJobDetailsCard job={job} handleJobUpdate={handleJobUpdate} />
         <ApplicantDetailsCard job={job} loadApplicant={loadApplicant} />
       </div>
