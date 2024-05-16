@@ -18,9 +18,9 @@ export default function NavBar({ user, setUser }) {
           {user.isPoster ? (
             <>
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/about">About Us</NavLink>
               <NavLink to="/book">How To Book</NavLink>
               <NavLink to="/jobs">My Jobs</NavLink>
+              <NavLink to="/contact">Contact Us</NavLink>
               <NavLink to="/profile">Profile</NavLink>
               <NavLink to="/logout" onClick={handleLogOut}>
                 Log Out
@@ -29,8 +29,8 @@ export default function NavBar({ user, setUser }) {
           ) : (
             <>
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/about">About Us</NavLink>
               <NavLink to="/board">Job Board</NavLink>
+              <NavLink to="/contact">Contact Us</NavLink>
               <NavLink to="/profile">Profile</NavLink>
               <NavLink to="/logout" onClick={handleLogOut}>
                 Log Out
@@ -41,8 +41,8 @@ export default function NavBar({ user, setUser }) {
       ) : (
         <>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About Us</NavLink>
           <NavLink to="/book">How To Book</NavLink>
+          <NavLink to="/contact">Contact Us</NavLink>
           <NavLink to="/auth">Log In</NavLink>
         </>
       )}

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Routes, Route, Navigate, Link } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import "./App.css";
-import AboutUsPage from "../AboutUsPage/AboutUsPage";
 import AuthPage from "../AuthPage/AuthPage";
 import HomePage from "../HomePage/HomePage";
 import NavBar from "../../components/NavBar/NavBar";
@@ -12,6 +11,7 @@ import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import PosterJobsPage from "../PosterJobsPage/PosterJobsPage";
 import JobApplicationPage from "../JobApplicationPage/JobApplicationPage";
 import PosterJobDetailsPage from "../PosterJobDetailsPage/PosterJobDetailsPage";
+import ContactUsPage from "../ContactUsPage/ContactUsPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -34,7 +34,7 @@ export default function App() {
           {/* Route components in here */}
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
-          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/book" element={<HowToBookPage />} />
           <Route
             path="/board"
