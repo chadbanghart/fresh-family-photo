@@ -82,9 +82,11 @@ export default class SignUpForm extends Component {
               <option value="Photographer">Photographer</option>
               <option value="Job Poster">Job Poster</option>
             </select>
-            <button type="submit" disabled={disable}>
-              SIGN UP
-            </button>
+            <div className="button-container">
+              <button type="submit" disabled={disable}>
+                SIGN UP
+              </button>
+            </div>
           </form>
         </div>
         <p className="error-message">&nbsp;{this.state.error}</p>

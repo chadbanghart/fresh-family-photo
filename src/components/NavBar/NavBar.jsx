@@ -25,6 +25,19 @@ export default function NavBar({ user, setUser }) {
               <NavLink to="/logout" onClick={handleLogOut}>
                 Log Out
               </NavLink>
+              {user.posterProfile ? (
+                <div className="user-avatar">
+                  <img
+                    className="avatar"
+                    src={user.posterProfile.photoURL}
+                    alt="avatar"
+                    referrerPolicy="no-referrer"
+                  />
+                  <span className="user-name">{user.name}</span>
+                </div>
+              ) : (
+                ""
+              )}
             </>
           ) : (
             <>
@@ -35,6 +48,19 @@ export default function NavBar({ user, setUser }) {
               <NavLink to="/logout" onClick={handleLogOut}>
                 Log Out
               </NavLink>
+              {user.photographerProfile ? (
+                <div className="user-avatar">
+                  <img
+                    className="avatar"
+                    src={user.photographerProfile.photoURL}
+                    alt="avatar"
+                    referrerPolicy="no-referrer"
+                  />
+                  <span>{user.name}</span>
+                </div>
+              ) : (
+                ""
+              )}
             </>
           )}
         </>

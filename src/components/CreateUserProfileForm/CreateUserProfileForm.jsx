@@ -35,7 +35,6 @@ export default function CreateUserProfileForm({
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Profile Data being sent:", profileData);
     onSave(user._id, profileData, profileType);
     setEditMode(false);
   }

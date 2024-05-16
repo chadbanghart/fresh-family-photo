@@ -19,3 +19,19 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+.user-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.user-name {
+  font-size: large;
+  font-weight: 600;
+}

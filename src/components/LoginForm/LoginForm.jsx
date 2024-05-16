@@ -48,7 +48,9 @@ export default function LoginForm({ setUser, navigate }) {
             onChange={handleChange}
             required
           />
-          <button type="submit">LOG IN</button>
+          <div className="button-container">
+            <button type="submit">LOG IN</button>
+          </div>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>

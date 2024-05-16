@@ -16,6 +16,7 @@ module.exports = {
 async function getJobDetails(req, res) {
   try {
     const { jobId } = req.params;
+    req.body.date += "T00:00";
     const job = await Job.findById(jobId);
     if (!job) {
       return res.status(404).send("Job not found");
@@ -88,11 +89,13 @@ async function getAllJobsForBoard(req, res) {
 
 async function create(req, res) {
   req.body.poster = req.user._id;
+  req.body.date += "T00:00";
   const job = await Job.create(req.body);
   res.json(job);
 }
 
 async function update(req, res) {
+  req.body.date += "T00:00";
   const job = await Job.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,

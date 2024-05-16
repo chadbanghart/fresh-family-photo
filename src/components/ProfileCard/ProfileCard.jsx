@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import "./ProfileCard.css";
 
 export default function ProfileCard({ user }) {
-  useEffect(() => {
-    console.log("User data for profile card:", user);
-  }, [user]);
+  useEffect(() => {}, [user]);
   return (
     <div className="profile-card">
       {user.posterProfile && (
