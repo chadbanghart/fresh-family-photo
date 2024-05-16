@@ -5,36 +5,27 @@ export default function HomePage() {
     <>
       <h1>Fresh Family Photo</h1>
       <div className="container">
-        <div className="col-1">
-          <img src="./basketball.jpeg" alt="basketball" />
-          <img src="./hockey.jpeg" alt="hockey" />
-          <img src="./baseball.jpeg" alt="baseball" />
-        </div>
-        <div className="top-frame">
-          <img src="./swimming.jpeg" alt="swim" />
-        </div>
-        <div className="col-3">
-          <img src="./soccer.jpeg" alt="soccer" />
-          <img src="./wrestling.jpeg" alt="wrestle" />
-        </div>
-        <div className="bottom-frame">
-          <span>
-            <img src="./football.jpeg" alt="football" />
-          </span>
-        </div>
+        <div className="col-1"></div>
+        <div className="top-frame"></div>
+        <div className="col-3"></div>
+        <div className="bottom-frame"></div>
         <div className="middle">
           <span>
-            At Fresh Family Photo, we are committed to capturing the dynamic
-            spirit and exhilarating moments of sports through our lens. Our
-            mission is to deliver unparalleled excellence in sports photography,
-            immortalizing the passion, determination, and triumphs of athletes
-            and teams worldwide. Through our dedication to innovation,
-            creativity, and professionalism, we strive to preserve the essence
-            of every sporting event, empowering athletes and fans alike to
-            relive and cherish their unforgettable experiences. With an
-            unwavering focus on quality, authenticity, and customer
-            satisfaction, we aim to inspire and elevate the world of sports
-            photography, one captivating image at a time.
+            At
+            <strong>
+              <em> Fresh Family Photo</em>
+            </strong>
+            , we are committed to capturing the dynamic spirit and exhilarating
+            moments of sports through our lens. Our mission is to deliver
+            unparalleled excellence in sports photography, immortalizing the
+            passion, determination, and triumphs of athletes and teams
+            worldwide. Through our dedication to innovation, creativity, and
+            professionalism, we strive to preserve the essence of every sporting
+            event, empowering athletes and fans alike to relive and cherish
+            their unforgettable experiences. With an unwavering focus on
+            quality, authenticity, and customer satisfaction, we aim to inspire
+            and elevate the world of sports photography, one captivating image
+            at a time.
           </span>
           <br />
           <br />

@@ -5,9 +5,9 @@ export default function HowToBookPage() {
     <>
       <h1>How To Book</h1>
       <div>
-        <div class="step">
+        <div className="step">
           <img src="./book.png" alt="booking" />
-          <div class="text-content">
+          <div className="text-content">
             <h4>01</h4>
             <h3>Request a Shoot</h3>
             <ul>
@@ -28,8 +28,8 @@ export default function HowToBookPage() {
           </div>
         </div>
         <hr />
-        <div class="step">
-          <div class="text-content">
+        <div className="step">
+          <div className="text-content">
             <h4>02</h4>
             <h3>Receive a Confirmation</h3>
             <p>
@@ -46,9 +46,9 @@ export default function HowToBookPage() {
           <img src="./Check.png" alt="check" />
         </div>
         <hr />
-        <div class="step">
+        <div className="step">
           <img src="./pay.png" alt="pay" />
-          <div class="text-content">
+          <div className="text-content">
             <h4>03</h4>
             <h3>Pay the deposit</h3>
             <p>
@@ -59,8 +59,8 @@ export default function HowToBookPage() {
           </div>
         </div>
         <hr />
-        <div class="step">
-          <div class="text-content">
+        <div className="step">
+          <div className="text-content">
             <h4>04</h4>
             <h3>View Your Photos</h3>
             <p>

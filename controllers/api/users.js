@@ -14,37 +14,52 @@ module.exports = {
 
 async function editPhotographerProfile(req, res) {
   const { userId } = req.params;
-  const profileData = req.body;
+  const { name, ...profileData } = req.body;
 
   try {
     const user = await User.findById(userId);
+    if (name && name !== user.name) {
+      user.name = name;
+      await user.save();
+    }
 
     // Update the photographer profile and link it to the user
     const profile = await Photographer.findOneAndUpdate(
       { user: userId },
-      { ...profileData, user: userId },
+      profileData,
       { new: true, upsert: true, setDefaultsOnInsert: true }
     );
 
-    // Update user document if photographerProfile is not set
-    if (!user.photographerProfile) {
+    // Ensure user references the latest profile data
+    if (
+      !user.photographerProfile ||
+      user.photographerProfile.toString() !== profile._id.toString()
+    ) {
       user.photographerProfile = profile._id;
       await user.save();
     }
 
     res.json(profile);
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server error");
+    console.error("Error updating photographer profile:", err);
+    res.status(500).json({
+      message: "Failed to update photographer profile",
+      error: err.toString(),
+    });
   }
 }
 
 async function editPosterProfile(req, res) {
   const { userId } = req.params;
-  const profileData = req.body;
+  const { name, ...profileData } = req.body;
 
   try {
     const user = await User.findById(userId);
+
+    if (name && name !== user.name) {
+      user.name = name;
+      await user.save();
+    }
 
     const profile = await Poster.findOneAndUpdate(
       { user: userId },
@@ -56,15 +71,21 @@ async function editPosterProfile(req, res) {
       }
     );
 
-    if (!user.posterProfile) {
+    if (
+      !user.posterProfile ||
+      user.posterProfile.toString() !== profile._id.toString()
+    ) {
       user.posterProfile = profile._id;
       await user.save();
     }
 
     res.json(profile);
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server error");
+    console.error("Error updating poster profile:", err);
+    res.status(500).json({
+      message: "Failed to update poster profile",
+      error: err.toString(),
+    });
   }
 }
 

@@ -1,26 +1,58 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function CreateUserProfileForm({ user, onSave, profileType }) {
-  const [profileData, setProfileData] = useState({
+export default function CreateUserProfileForm({
+  user,
+  onSave,
+  profileType,
+  setEditMode,
+  existingProfileData,
+}) {
+  const initialProfileState = {
     photoURL: "",
-    phone: "", // only used for photographers
-  });
+    phone: "", // Only for photographers
+  };
 
-  async function handleChange(e) {
-    setProfileData({ ...profileData, [e.target.name]: e.target.value });
+  // Initialize state checking for existing data
+  const [profileData, setProfileData] = useState(() => ({
+    name: user.name,
+    photoURL: existingProfileData?.photoURL || initialProfileState.photoURL,
+    phone: existingProfileData?.phone || initialProfileState.phone,
+  }));
+
+  useEffect(() => {
+    setProfileData({
+      name: user.name,
+      photoURL: existingProfileData?.photoURL || "",
+      phone: existingProfileData?.phone || "",
+    });
+  }, [user, existingProfileData]);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setProfileData((prev) => ({ ...prev, [name]: value }));
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    await onSave(user._id, profileData, profileType);
-    setProfileData({
-      photoURL: "",
-      phone: "",
-    });
+    console.log("Profile Data being sent:", profileData);
+    onSave(user._id, profileData, profileType);
+    setEditMode(false);
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      <label>
+        Name:{" "}
+        <input
+          type="text"
+          name="name"
+          value={profileData.name}
+          onChange={handleChange}
+        />
+      </label>
+      <label>Email: {user.email}</label>
+      <label>User Type: {user.isPoster ? "Job Poster" : "Photographer"}</label>
+
       <label>
         Photo URL:
         <input
@@ -30,20 +62,21 @@ export default function CreateUserProfileForm({ user, onSave, profileType }) {
           onChange={handleChange}
         />
       </label>
+
       {profileType === "Photographer" && (
-        <>
-          <label>
-            Phone:
-            <input
-              type="text"
-              name="phone"
-              value={profileData.phone}
-              onChange={handleChange}
-            />
-          </label>
-        </>
+        <label>
+          Phone:
+          <input
+            type="text"
+            name="phone"
+            value={profileData.phone}
+            onChange={handleChange}
+          />
+        </label>
       )}
+
       <button type="submit">Save Profile</button>
+      <button onClick={() => setEditMode(false)}>Cancel Changes</button>
     </form>
   );
 }

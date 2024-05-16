@@ -1,0 +1,34 @@
+.profile-card {
+  max-width: 350px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.profile-card h5,
+.profile-card p {
+  margin: 10px 0;
+}
+
+.profile-card img {
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profile-card .posterInfo,
+.profile-card .photographerInfo {
+  padding: 10px;
+  background-color: #d4d4d4;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.profile-card .photographerInfo p {
+  margin: 5px 0;
+}
