@@ -82,9 +82,10 @@ code {
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--tan-1);
-  border: 0.1vmin solid var(--tan-3);
+  background-color: rgb(212, 212, 212);
+  border: 0.1vmin solid grey;
   border-radius: 1vmin;
+  justify-content: center;
 }
 
 p.error-message {
@@ -149,7 +150,7 @@ button.btn-xs {
 button:disabled,
 form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--tan-4);
+  background-color: grey;
 }
 
 button[type="submit"] {

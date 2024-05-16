@@ -1,5 +1,5 @@
 .profile-card {
-  max-width: 350px;
+  max-width: 550px;
   margin: auto;
   padding: 20px;
   background-color: #ffffff;
@@ -9,16 +9,18 @@
   font-family: Arial, sans-serif;
 }
 
-.profile-card h5,
+.profile-card h3,
 .profile-card p {
-  margin: 10px 0;
+  margin: 5px 0;
+}
+.profile-card h3 {
+  font-size: xx-large;
 }
 
 .profile-card img {
   width: 80%;
   height: auto;
   border-radius: 50%;
-  margin-bottom: 15px;
 }
 
 .profile-card .posterInfo,

@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as jobsAPI from "../../utilities/jobs-api";
+import "./JobApplicationForm.css";
 
 export default function JobApplicationForm({ job, handleApplication }) {
   const [pitch, setPitch] = useState("");
@@ -31,7 +32,7 @@ export default function JobApplicationForm({ job, handleApplication }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="app-form" onSubmit={handleSubmit}>
       <label>Upload your resume (PDF only):</label>
       <input
         type="file"

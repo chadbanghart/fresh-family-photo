@@ -1,0 +1,17 @@
+.app-form {
+  width: 50%;
+  margin: 20px auto;
+  min-height: 300px;
+}
+
+label {
+  display: block;
+}
+
+input {
+  height: min-content;
+}
+
+button {
+  height: fit-content;
+}

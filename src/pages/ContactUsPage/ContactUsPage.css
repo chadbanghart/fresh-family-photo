@@ -1,11 +1,11 @@
 .image-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 img {
-  height: 200px;
+  height: 250px;
+  width: auto;
   padding: 10px;
 }
 
