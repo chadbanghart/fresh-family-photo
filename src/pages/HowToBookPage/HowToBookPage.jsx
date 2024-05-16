@@ -5,14 +5,14 @@ export default function HowToBookPage() {
     <>
       <h1>How To Book</h1>
       <div>
-        <div className="step">
+        <div className="section-container">
           <img src="./book.png" alt="booking" />
           <div className="text-content">
             <h4>01</h4>
             <h3>Request a Shoot</h3>
             <ul>
               <h6>
-                Within your "My Jobs" page you can submit any event you have
+                Within your "My Jobs" page you can submit any event you have,
                 just provide the following details:
               </h6>
               <li>Name of your job</li>
@@ -28,7 +28,7 @@ export default function HowToBookPage() {
           </div>
         </div>
         <hr />
-        <div className="step">
+        <div className="section-container">
           <div className="text-content">
             <h4>02</h4>
             <h3>Receive a Confirmation</h3>
@@ -46,7 +46,7 @@ export default function HowToBookPage() {
           <img src="./Check.png" alt="check" />
         </div>
         <hr />
-        <div className="step">
+        <div className="section-container">
           <img src="./pay.png" alt="pay" />
           <div className="text-content">
             <h4>03</h4>
@@ -59,7 +59,7 @@ export default function HowToBookPage() {
           </div>
         </div>
         <hr />
-        <div className="step">
+        <div className="section-container">
           <div className="text-content">
             <h4>04</h4>
             <h3>View Your Photos</h3>

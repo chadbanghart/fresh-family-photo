@@ -25,9 +25,10 @@ export default function ContactUsPage() {
         </div>
       </div>
       <div>
+        <p>Have more questions about how our platform works?</p>
         <p>
-          Have more questions Contact how our platform works? Feel free to reach
-          out to us with any questions you have by filling out the form below!
+          Feel free to reach out to us with any questions you have by filling
+          out the form below!
         </p>
         <div className="contact-form-container">
           <h3>Contact Us</h3>
