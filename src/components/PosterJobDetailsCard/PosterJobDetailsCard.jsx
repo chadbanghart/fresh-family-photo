@@ -6,7 +6,10 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
   const [formData, setFormData] = useState({ ...job });
 
   useEffect(() => {
-    setFormData({ ...job });
+    const formattedDate = job.date
+      ? new Date(job.date).toISOString().split("T")[0]
+      : "";
+    setFormData({ ...job, date: formattedDate });
   }, [job]);
 
   const handleChange = (event) => {
