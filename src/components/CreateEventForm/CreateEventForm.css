@@ -12,3 +12,11 @@
 button {
   width: fit-content;
 }
+
+input {
+  margin: 0;
+}
+
+textarea {
+  height: 5rem;
+}
