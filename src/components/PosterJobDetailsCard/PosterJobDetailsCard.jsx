@@ -14,7 +14,14 @@ export default function PosterJobDetailsCard({ job, handleJobUpdate }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "date") {
+      const adjustedDate = new Date(value + "T00:00:00Z")
+        .toISOString()
+        .split("T")[0];
+      setFormData((prev) => ({ ...prev, [name]: adjustedDate }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (event) => {
